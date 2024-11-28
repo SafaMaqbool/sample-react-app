@@ -1,24 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLoaderData } from "react-router-dom";
 
 function Github() {
   const data = useLoaderData();
-  // const [data, setData] = useState([])
-  // useEffect(() => {
-  //  fetch('https://api.github.com/users/hiteshchoudhary')
-  //  .then(response => response.json())
-  //  .then(data => {
-  //     console.log(data);
-  //     setData(data)
-  //  })
-  // }, [])
 
   return (
-    <div className="text-center m-4 bg-gray-600 text-white p-4 text-3xl">
-      Github followers: {data.followers}
-      <div className="flex gap-5 justify-center items-center">
-        <img src={data.avatar_url} alt="Git picture" width={300} />
-        <p className="mt-5 text-left">{data.bio}</p>
+    <div className="text-center m-4 bg-gray-600 text-white p-4 rounded-lg shadow-md">
+      {/* Followers Section */}
+      <h1 className="text-3xl sm:text-4xl font-semibold mb-4">
+        Github followers: {data.followers}
+      </h1>
+      {/* Flex Container for Avatar and Bio */}
+      <div className="flex flex-col sm:flex-row gap-8 justify-center items-center sm:gap-16">
+        {/* Avatar Section */}
+        <div className="w-full sm:w-1/3">
+          <img
+            src={data.avatar_url}
+            alt="GitHub Avatar"
+            className="rounded-full mx-auto sm:w-80 sm:h-80 w-48 h-48 object-cover"
+          />
+        </div>
+        {/* Bio Section */}
+        <div className="w-full sm:w-2/3">
+          <p className="mt-5 text-left text-sm sm:text-base">{data.bio}</p>
+        </div>
       </div>
     </div>
   );
